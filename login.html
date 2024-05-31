@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie - Księgarnia Internetowa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container, .register-container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 1em;
+        }
+        .login-container h2, .register-container h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .form input {
+            width: calc(100% - 2em);
+            padding: 1em;
+            margin: 0.5em 0;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form input[type="submit"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .toggle-link {
+            text-align: center;
+            margin-top: 1em;
+        }
+        .toggle-link a {
+            color: #333;
+            text-decoration: none;
+        }
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="login-container">
+        <h2>Zaloguj się</h2>
+        <div id="login-error-message" class="error-message"></div>
+        <form class="form" onsubmit="return validateLogin(event)">
+            <input type="text" id="login-username" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" id="login-password" name="password" placeholder="Hasło" required>
+            <input type="submit" value="Zaloguj">
+        </form>
+        <div class="toggle-link">
+            <p>Nie masz konta? <a href="#" onclick="showRegister()">Zarejestruj się</a></p>
+        </div>
+    </div>
+    <div class="register-container" id="register-container" style="display: none;">
+        <h2>Zarejestruj się</h2>
+        <div id="register-error-message" class="error-message"></div>
+        <form class="form" onsubmit="return validateRegister(event)">
+            <input type="text" id="register-username" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" id="register-password" name="password" placeholder="Hasło" required>
+            <input type="password" id="register-confirm-password" name="confirm-password" placeholder="Potwierdź hasło" required>
+            <input type="submit" value="Zarejestruj się">
+        </form>
+        <div class="toggle-link">
+            <p>Masz już konto? <a href="#" onclick="showLogin()">Zaloguj się</a></p>
+        </div>
+    </div>
+    <script>
+        function showLogin() {
+            document.getElementById('login-container').style.display = 'block';
+            document.getElementById('register-container').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        }
+
+        function validateLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const errorMessage = document.getElementById('login-error-message');
+
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Wszystkie pola są wymagane.';
+                return false;
+            }
+
+            if (username !== 'testuser' || password !== 'testpass') {
+                errorMessage.textContent = 'Nieprawidłowa nazwa użytkownika lub hasło.';
+                return false;
+            }
+
+            errorMessage.textContent = '';
+            alert('Zalogowano pomyślnie!');
+            
+            return true;
+        }
+
+        function validateRegister(event) {
+            event.preventDefault();
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            const errorMessage = document.getElementById('register-error-message');
+
+            if (username === '' || password === '' || confirmPassword === '') {
+                errorMessage.textContent = 'Wszystkie pola są wymagane.';
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Hasła muszą być takie same.';
+                return false;
+            }
+
+            
+            errorMessage.textContent = '';
+            alert('Zarejestrowano pomyślnie!');
+            showLogin();
+            return true;
+        }
+    </script>
+</body>
+</html>
