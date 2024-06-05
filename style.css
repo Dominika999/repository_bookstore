@@ -108,7 +108,7 @@ header .fa-bars{
   display: flex;
   align-items: center;
   min-height: 100vh;
-  background:url(file:///C:/Users/domin/OneDrive/Pulpit/IT/Ksi%C4%99garnia/Background.jpeg);
+  background:url(file:///C:/Users/domin/OneDrive/Pulpit/IT/repository_bookstore/Background.jpeg);
   background-size: cover;
   background-position: center;
 }
@@ -150,7 +150,7 @@ header .fa-bars{
   position: relative;
 }
 
-about .row .video-container video{
+.about .row .video-container video{
   width: 100%;
   border: 1.5rem solid #fff;
   border-radius: .5rem;
@@ -187,7 +187,40 @@ about .row .video-container video{
   line-height: 1.5;
 }
 
+.icons-container{
+  background: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
 
+.icons-container .icons{
+  background: #fff;
+  border: .1rem solid rgba(0,0,0,.1);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex: 1 1 25rem;
+}
+
+.icons-container .icons img{
+  height: 5rem;
+  margin-right: 2rem;
+}
+
+.icons-container .icons h3{
+  color: #333;
+  padding-bottom: .5rem;
+  font-size: 1.5rem;
+}
+
+.icons-container .icons span{
+  color: #999;
+  padding-bottom: 1.3rem;
+  font-size: 1.5rem;
+}
 
 
 
@@ -254,7 +287,7 @@ section{
 .products .box-container{
   display: flex;
   flex-wrap: wrap;
-  gap:1.5rem;
+  gap:10rem;
 }
 
 .products .box-container .box{
@@ -269,11 +302,11 @@ section{
   position: relative;
   text-align: center;
   padding-top: 2rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .products .box-container .box .image img{
-  height: 25rem;
+  height: 40rem;
 }
 
 .products .box-container .box .image img{
